@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-12">
+        <h3>Country With City List</h3>
+        <table class="table table-stripped table-bordered">
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>Country Nmae</th>
+                    <th>ISO2</th>
+                    <th>ISO3</th>
+                    <th>City Name</th>
+                    <th>Lat</th>
+                    <th>Lan</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let countriesWithCityes of countryList; let i=index">
+                    <tr *ngFor="let city of countriesWithCityes.cities; let j=index">
+                        <td *ngIf="j==0" [attr.rowspan]="countriesWithCityes.cities.length">
+                                {{i+1}}
+                        </td>
+                        <td *ngIf="j==0" [attr.rowspan]="countriesWithCityes.cities.length">
+                            {{countriesWithCityes.country.name}}
+                    </td>
+                    <td *ngIf="j==0" [attr.rowspan]="countriesWithCityes.cities.length">
+                        {{countriesWithCityes.country.iso2}}
+                </td>
+                <td *ngIf="j==0" [attr.rowspan]="countriesWithCityes.cities.length">
+                    {{countriesWithCityes.country.iso3}}
+                 </td>
+                 <td>{{city.name}}</td>
+                 <td>{{city.lan}}</td>
+                 <td>{{city.lot}}</td>
+                 <td *ngIf="j==0" [attr.rowspan]="countriesWithCityes.cities.length">
+                    <a class="btn btn-danger btn-sm" [routerLink]="['/countryCity','edit',countriesWithCityes.country.id]">Edit</a>  |
+                    <a class="btn btn-danger" (click)="deleteCountryCity(countriesWithCityes.country.id)">Delete</a>
+                 </td>
+                    </tr>
+                </ng-container>               
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h3>Country Info</h3>
+           
+            <div class="mb-2">
+                <label>Country Name</label>
+                <input placeholder="Enter Name" [(ngModel)]="countryObj.name" class="form-control">               
+              </div> 
+            <div class="mb-2">
+                <label>ISO2</label>
+                <input placeholder="Enter ISO2" [(ngModel)]="countryObj.iso2" class="form-control">               
+              </div> 
+            
+            <div class="mb-2">
+                <label>ISO3</label>
+                <input placeholder="Enter ISO3" [(ngModel)]="countryObj.iso3" class="form-control" >
+            </div>
+            <div class="mb-2">
+                <button type="submit" class="btn btn-success" (click)="addCountryCities()">Submit</button>
+            </div>
+        </div>
+        <div class="col-6">
+            <h3>Add City</h3>
+            <div class="row">
+                <div class="col-3">
+                    <label>Name</label>
+                    <input type="text" placeholder="Name" class="form-control mb-2" [(ngModel)]="cityObj.name">
+                </div>
+                <div class="col-3">
+                    <label>Lat</label>
+                    <input type="text" placeholder="Latitude" class="form-control mb-2" [(ngModel)]="cityObj.lot">
+                </div>
+                <div class="col-3">
+                    <label>Lan</label>
+                    <input type="text" placeholder="Longitude" class="form-control mb-2" [(ngModel)]="cityObj.lan">
+                </div>
+                <div class="col-3 mt-4 mb-2 text-center" >
+                    <button (click)="Addcities()" class="btn btn-success">
+                        Add City
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-bordered table-stripped">
+                   <thead>
+                    <tr>
+                        <th>City Name</th><th>Lat</th><th>Lon</th><th>QAction</th>
+                    </tr>
+                   </thead>
+                   <tbody>
+                    <tr *ngFor="let item of cityList">
+                        <td>
+                            {{item.name}}
+                        </td>
+                        <td>
+                            {{item.lot}}
+                        </td>
+                        <td>
+                            {{item.lan}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" (click)="deleteCity(item,cityList)">Delete</button>
+                        </td>
+                    </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
